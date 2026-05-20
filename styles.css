@@ -411,6 +411,40 @@ h3 {
   backdrop-filter: blur(12px);
 }
 
+.hero-federation {
+  width: min(650px, 100%);
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-top: 22px;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.hero-federation img {
+  position: relative;
+  z-index: 1;
+  width: 140px;
+  height: 140px;
+  flex: 0 0 auto;
+  object-fit: contain;
+  border-radius: 50%;
+  filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.42));
+}
+
+.hero-federation p {
+  margin: 0;
+  padding: 15px 18px 15px 28px;
+  border: 1px solid rgba(240, 204, 112, 0.28);
+  border-radius: 8px;
+  background: rgba(8, 9, 9, 0.58);
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1.35;
+  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(14px);
+  transform: translateX(-16px);
+}
+
 .hero-strip {
   width: min(760px, 100%);
   display: grid;
@@ -2465,6 +2499,22 @@ h3 {
   .hero-actions,
   .hero-actions .button {
     width: 100%;
+  }
+
+  .hero-federation {
+    width: 100%;
+    align-items: center;
+  }
+
+  .hero-federation img {
+    width: 96px;
+    height: 96px;
+  }
+
+  .hero-federation p {
+    padding: 12px 12px 12px 22px;
+    font-size: 0.78rem;
+    transform: translateX(-10px);
   }
 
   .hero-strip {
