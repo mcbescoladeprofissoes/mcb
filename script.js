@@ -37,7 +37,7 @@ menuToggle.addEventListener("click", () => {
 });
 
 nav.addEventListener("click", (event) => {
-  if (event.target.matches("a")) {
+  if (event.target.closest("a, button")) {
     header.classList.remove("is-open");
     menuToggle.setAttribute("aria-expanded", "false");
   }
@@ -213,10 +213,10 @@ const masteryContent = {
     text: "O aluno aprende leitura de cabeça, controle de máquina, transições limpas e construção de acabamento para cortes atuais.",
     points: ["Leitura de cabeça", "Controle de máquina", "Transições limpas"],
     assetName: "fade_degrade",
-    background: "assets/presentation2.jpeg",
+    background: "assets/presentation2.png",
     images: [
       {
-        src: "assets/presentation2.jpeg",
+        src: "assets/presentation2.png",
         alt: "Aula prática de fade e degradê",
       },
       {
@@ -239,7 +239,7 @@ const masteryContent = {
         alt: "Professor da MCB com experiência em atendimento de barbearia",
       },
       {
-        src: "assets/presentation2.jpeg",
+        src: "assets/presentation2.png",
         alt: "Prática supervisionada de técnica com modelo",
       },
     ],
@@ -254,7 +254,7 @@ const masteryContent = {
     background: "assets/____fundo_site.png",
     images: [
       {
-        src: "assets/presentation2.jpeg",
+        src: "assets/presentation2.png",
         alt: "Aluno acompanhando técnica de corte com professor",
       },
       {
@@ -277,7 +277,7 @@ const masteryContent = {
         alt: "Cadeira e estação de trabalho da MCB",
       },
       {
-        src: "assets/presentation2.jpeg",
+        src: "assets/presentation2.png",
         alt: "Barbeiro executando acabamento em modelo",
       },
     ],
@@ -420,4 +420,36 @@ document.querySelector("[data-whatsapp-form]")?.addEventListener("submit", (even
   const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
   window.open(url, "_blank", "noopener,noreferrer");
+});
+
+const founderModal = document.querySelector("[data-founder-modal]");
+const founderPanel = founderModal?.querySelector(".founder-panel");
+const founderOpenTriggers = document.querySelectorAll("[data-founder-open]");
+const founderCloseTriggers = document.querySelectorAll("[data-founder-close]");
+let lastFounderTrigger = null;
+
+const openFounderModal = (trigger) => {
+  if (!founderModal) return;
+
+  lastFounderTrigger = trigger || document.activeElement;
+  founderModal.hidden = false;
+  document.body.classList.add("has-modal");
+  window.setTimeout(() => founderPanel?.focus(), 0);
+};
+
+const closeFounderModal = () => {
+  if (!founderModal) return;
+
+  founderModal.hidden = true;
+  document.body.classList.remove("has-modal");
+  lastFounderTrigger?.focus?.();
+};
+
+founderOpenTriggers.forEach((trigger) => trigger.addEventListener("click", () => openFounderModal(trigger)));
+founderCloseTriggers.forEach((trigger) => trigger.addEventListener("click", closeFounderModal));
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && founderModal && !founderModal.hidden) {
+    closeFounderModal();
+  }
 });
