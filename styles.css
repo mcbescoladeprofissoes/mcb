@@ -2508,6 +2508,10 @@ h3 {
     padding-block: 54px;
   }
 
+  .mastery-section {
+    padding-inline: 32px;
+  }
+
   .vip-simulator-panel,
   .mastery-detail,
   .booking-form {
